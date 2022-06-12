@@ -1,7 +1,11 @@
+const cors = require("cors");
 const puppeteer = require("puppeteer");
 const express = require("express");
 
 const app = express();
+app.use(cors({
+    origin: "*",
+}));
 
 let bananaPrice;
 
@@ -11,21 +15,9 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/:country/:city", getBananaPrice, (req, res) => {
+    console.log(bananaPrice);
     res.json({ "bananaPrice" : bananaPrice});
 });
-
-
-
-
-
-/* LISTENING TO PORT 3000 */
-
-app.listen(3000);
-
-/* LISTENING TO PORT 3000 */
-
-
-
 
 
 //Getting the banana price
@@ -60,3 +52,11 @@ async function getBananaPrice(req, res, next){
     bananaPrice = bananaPrice.slice(0, bananaPrice.length - 8);
     next();
 }
+
+
+
+/* LISTENING TO PORT 3000 */
+
+app.listen(3000);
+
+/* LISTENING TO PORT 3000 */
