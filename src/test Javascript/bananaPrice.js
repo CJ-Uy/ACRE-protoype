@@ -1,19 +1,6 @@
-const puppeteer = require("puppeteer");
-
 //LocationIQ for reverse geocoding to get the city name 
 //Documentiation: https://locationiq.com/docs
 const LoactionIQAPIKey = "pk.c36b5affc8078e76726e5d513ee7d004"; 
-
-//XML path
-const numbeoURL = "https://www.numbeo.com/cost-of-living/";
-const bananaXMLPath = "/html/body/div[2]/table/tbody/tr[19]/td[2]/span";
-
-async function scrapBananaPrice(city){
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(numbeoURL + "/" + city); //Need country too
-    await browser.close();
-}
 
 navigator.geolocation.getCurrentPosition(position => {
     let lat = position.coords.latitude;
@@ -28,11 +15,23 @@ navigator.geolocation.getCurrentPosition(position => {
     .then(data => {
         console.log(data);
         let city = data.address.city;
-        sessionStorage.setItem("city", city); //stored in session storage
+        let country = data.address.country;
         
+        let bananaPriceAPIUrl = "http://localhost:3000/" + country + "/" + city;
+        
+        fetch(bananaPriceAPIUrl)
+        .then(data => {
+            console.log("Banna Price: " + data.bananaPrice);
+        })
+        .catch(error => {
+            console.log("Banana Price failed to fetch");
+            console.log(error);
+        });
+
     })
     .catch(error => {
         console.log("LocationIQ has failed to respond");
+        console.log(error);
     });
 });
 
