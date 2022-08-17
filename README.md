@@ -12,20 +12,25 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
-Download Nodejs if not already have
+1. Download Nodejs if not already have
+2. In your terminal type
 
 ```sh
 npm install
 ```
+3. You may need to ask for the .env file to run the fully working product
 
-### Compile and Hot-Reload for Development
+##Running
+To run in your console simply type 
 
 ```sh
 npm run dev
 ```
-
-### Compile and Minify for Production
-
+or
 ```sh
-npm run build
+npm run serve
+```
+To build a production ready output type
+```sh
+npm run guild
 ```
