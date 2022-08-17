@@ -7,22 +7,30 @@ app.use(cors({
     origin: "*",
 }));
 
-
-
-
 let bananaPrice;
+
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });  //this path may change depending one where this file is
+
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+const LOCATION_IQ_API_KEY = process.env.LOCATION_IQ_API_KEY; 
+
 
 // app.get("/", async (req, res) => {
 //     res.send("Hello World");
 // });
+app.get("/weather_conditions_api_key", (req, res) => {
+    res.json({"WEATHER_API_KEY" : WEATHER_API_KEY});
+})
+
+app.get("/location_iq_api_key", (req, res) => {
+    res.json({"LOCATION_IQ_API_KEY" : LOCATION_IQ_API_KEY})
+})
  
 app.get("/banana/price/:country/:city", getBananaPrice, (req, res) => {
     console.log(bananaPrice);
     res.json({ "bananaPrice" : bananaPrice});
 });
-
-
-
 
 
 //Getting the banana price
@@ -60,8 +68,10 @@ async function getBananaPrice(req, res, next){
 
 
 
+
+
 /* LISTENING TO PORT 3000 */
 
-app.listen(3000);
+app.listen(3000, () => console.log("Server is now online!"));
 
 /* LISTENING TO PORT 3000 */

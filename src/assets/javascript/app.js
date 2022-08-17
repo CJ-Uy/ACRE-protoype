@@ -1,22 +1,14 @@
+const HOST_NAME = "http://localhost:3000/";
 
-
-
-/* ----- IMPORT API KEYS ----- */
-const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });  //this path may change depending one where this file is
-
-const weatherAPIKey = process.env.WEATHER_API_KEY;
-const LoactionIQAPIKey = process.env.LOCATION_IQ_API_KEY; 
-/* ----- END OF IMPORT ----- */
-
-
-
-
+const WEATHER_CONDITIONS_API_KEY_REQUEST = HOST_NAME + "weather_conditions_api_key";
+const LOCATION_IQ_QPI_KEY_REQUEST = HOST_NAME + "location_iq_api_key"
 
 /* ----- MAIN FUNCTION ----- */
 navigator.geolocation.getCurrentPosition(position => {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
+
+    console.log(`Lat: ${lat}   Lon: ${lon}`)
     getWeather(lat, lon);
     getBananaPrice(lat, lon);
 
@@ -29,24 +21,28 @@ navigator.geolocation.getCurrentPosition(position => {
 
 /* ----- WEATHER FUNCTIONS ----- */
 async function getWeather(lat, lon){
-    const weatherAPIUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely&units=metric&appid=" + weatherAPIKey;
-    
-    console.log("OpenWeather API request link: " + weatherAPIUrl);
+    fetch(WEATHER_CONDITIONS_API_KEY_REQUEST)
+    .then(res => {
+        return res.json();
+    }).then(key => {
+        let weatherAPIUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + 
+                            "&lon=" + lon + "&exclude=minutely&units=metric&appid=" + key.WEATHER_API_KEY;
+        fetch(weatherAPIUrl)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                //Weather Conditions Saved
+                let wCon = new weatherInfo(data); //weather conditions
 
-    fetch(weatherAPIUrl)
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        //Weather Conditions Saved
-        let wCon = new weatherInfo(data); //weather conditions
-
-        console.log(wCon)
-        console.table(data)
-        
+                console.log(wCon)
+            })
+            .catch(function(error){
+                console.log("OpenWeather API has failed to reply");
+            });
     })
     .catch(function(error){
-        console.log("OpenWeather API has failed to reply");
+        console.log("Backend API not reached")
     });
 }
 
@@ -121,37 +117,43 @@ dt = date and time of calculation on UTC
 
 /* ----- BANANA PRICE FUNCTIONS ----- */
 async function getBananaPrice(lat, lon){
-    let LocationIQURL = "https://eu1.locationiq.com/v1/reverse.php?key=" + LoactionIQAPIKey + "&lat=" + lat + "&lon=" + lon + "&format=json"; 
-    console.log("LocationIQ API request link: " + LocationIQURL);
-    fetch(LocationIQURL)
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        let city = data.address.city;
-        let country = data.address.country;
-        
-
-        let bananaPriceAPIUrl = "http://localhost:3000/" + "banana/price/" + country + "/" + city;
-        console.log("Banana price API request: " + bananaPriceAPIUrl);
-
-        fetch(bananaPriceAPIUrl)
+    fetch(LOCATION_IQ_QPI_KEY_REQUEST)
+    .then(res => {
+        return res.json()
+    }).then(key => {
+        let LocationIQURL = "https://eu1.locationiq.com/v1/reverse.php?key=" + key.LOCATION_IQ_API_KEY + 
+                            "&lat=" + lat + "&lon=" + lon + "&format=json"; 
+        console.log("LocationIQ API request link: " + LocationIQURL);
+        fetch(LocationIQURL)
         .then(response => {
             return response.json();
         })
         .then(data => {
-            console.log(data);
-            sessionStorage.setItem("bananaPrice", data.bananaPrice);
+            let city = data.address.city;
+            let country = data.address.country;
+            
+    
+            let bananaPriceAPIUrl = HOST_NAME + "banana/price/" + country + "/" + city;
+            console.log("Banana price API request: " + bananaPriceAPIUrl);
+    
+            fetch(bananaPriceAPIUrl)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                sessionStorage.setItem("bananaPrice", data.bananaPrice);
+            })
+            .catch(error => {
+                console.log("Banana Price failed to fetch");
+                console.log(error);
+            });
+    
         })
         .catch(error => {
-            console.log("Banana Price failed to fetch");
+            console.log("LocationIQ has failed to respond");
             console.log(error);
-        });
-
+        });  
     })
-    .catch(error => {
-        console.log("LocationIQ has failed to respond");
-        console.log(error);
-    });
 }
 /* ----- END OF BANANA PRICE FUNCTIONS ----- */
