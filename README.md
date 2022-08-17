@@ -1,6 +1,6 @@
 # ACRE-PROTOTYPE
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a prototype program for the Assisted Cavendish Real-time Emulator
 
 ## Recommended IDE Setup
 
@@ -20,7 +20,7 @@ npm install
 ```
 3. You may need to ask for the .env file to run the fully working product
 
-##Running
+## Running
 To run in your console simply type 
 
 ```sh
