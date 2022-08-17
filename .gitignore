@@ -28,4 +28,5 @@ coverage
 *.sw?
 
 #API keys
-.env
+#.env
+#Remove next time just now to make things simpler
