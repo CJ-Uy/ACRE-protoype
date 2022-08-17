@@ -32,5 +32,5 @@ npm run serve
 ```
 To build a production ready output type
 ```sh
-npm run guild
+npm run build
 ```
