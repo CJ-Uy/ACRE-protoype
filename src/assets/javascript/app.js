@@ -1,14 +1,19 @@
-//Weather API (Documentation: https://openweathermap.org/api/one-call-api)
-const weatherAPIKey = "7b39e155885385a5e75cc53586b392fb";
-
-//LocationIQ for reverse geocoding to get the city name 
-//Documentiation: https://locationiq.com/docs
-const LoactionIQAPIKey = "pk.c36b5affc8078e76726e5d513ee7d004"; 
 
 
 
+/* ----- IMPORT API KEYS ----- */
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });  //this path may change depending one where this file is
 
-/* ----- main function ----- */
+const weatherAPIKey = process.env.WEATHER_API_KEY;
+const LoactionIQAPIKey = process.env.LOCATION_IQ_API_KEY; 
+/* ----- END OF IMPORT ----- */
+
+
+
+
+
+/* ----- MAIN FUNCTION ----- */
 navigator.geolocation.getCurrentPosition(position => {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
@@ -36,7 +41,9 @@ async function getWeather(lat, lon){
         //Weather Conditions Saved
         let wCon = new weatherInfo(data); //weather conditions
 
-        sessionStorage.setItem("weather", wCon); // FIXXXXXXXXXXXXXXXXXXXXXX
+        console.log(wCon)
+        console.table(data)
+        
     })
     .catch(function(error){
         console.log("OpenWeather API has failed to reply");
@@ -86,25 +93,25 @@ function showError(error) {
     }
 }
 
-        /* WEATHER UNITS
-        main.temp = Kelvin
-        main.pressure = hPa
-        main.humidity = %
+/* WEATHER UNITS
+main.temp = Kelvin
+main.pressure = hPa
+main.humidity = %
 
-        visibility = meter (max: 10km)
+visibility = meter (max: 10km)
 
-        wind.speed = meter/sec
-        wind.gust = meter/sec (gusts are sudden bursts of wind speed approx 20 secs)
+wind.speed = meter/sec
+wind.gust = meter/sec (gusts are sudden bursts of wind speed approx 20 secs)
 
-        clouds.all = cloudiness  %
+clouds.all = cloudiness  %
 
-        rain.1h = rain voulem in the last hour in mm
-        rain.3h = same as ^ but for last 3 hours
+rain.1h = rain voulem in the last hour in mm
+rain.3h = same as ^ but for last 3 hours
 
-        snow = no need
+snow = no need
 
-        dt = date and time of calculation on UTC
-        */
+dt = date and time of calculation on UTC
+*/
 
 /* ----- END OF WEATHER FUNCTIONS ----- */
 
@@ -125,7 +132,7 @@ async function getBananaPrice(lat, lon){
         let country = data.address.country;
         
 
-        let bananaPriceAPIUrl = "http://localhost:3000/" + country + "/" + city;
+        let bananaPriceAPIUrl = "http://localhost:3000/" + "banana/price/" + country + "/" + city;
         console.log("Banana price API request: " + bananaPriceAPIUrl);
 
         fetch(bananaPriceAPIUrl)

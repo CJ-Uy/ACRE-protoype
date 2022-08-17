@@ -7,17 +7,22 @@ app.use(cors({
     origin: "*",
 }));
 
+
+
+
 let bananaPrice;
 
-
-app.get("/", async (req, res) => {
-    res.send("Hello World");
-});
-
-app.get("/:country/:city", getBananaPrice, (req, res) => {
+// app.get("/", async (req, res) => {
+//     res.send("Hello World");
+// });
+ 
+app.get("/banana/price/:country/:city", getBananaPrice, (req, res) => {
     console.log(bananaPrice);
     res.json({ "bananaPrice" : bananaPrice});
 });
+
+
+
 
 
 //Getting the banana price
