@@ -1,20 +1,12 @@
-@font-face {
-    font-family: Manrope;
-    src: url(../fonts/Manrope-VariableFont_wght.ttf);
-}
-
-* {
-    outline: #4CAF50 solid 2px;
-    font-family: Manrope;
-}
-
+/* * {
+    outline: 2px solid lightgreen;
+} */
 
 /*  Header  */
 header{
     width: 90%;
     margin-left: 5%;
     margin-top: 1%;
-    display: grid;
 }
 
 h1 {
@@ -28,37 +20,89 @@ h1 {
     width: 35px;
 }
 
+button {
+    background: none;
+    outline: none;
+    border: none;
+}
+
 nav {
     display: inline-block;
     width: 50%;
     margin-left: 50px;
+} nav > button{
+    background: white;
+    margin-right: 50px;
 }
 
 
 
 /*  Middle Content */
 main {
-    width: 80%;
-    margin-left: 10%;
+    width: 70%;
+    margin-left: 15%;
 }
 
 #name{
     font-size: 60px;
-    margin-bottom: 0px;
+    letter-spacing: 2px;
+    line-height: 65px;
+    margin-bottom: 20px;
 }
+#cavendish{
+    color: #fbb040;
+    letter-spacing: 15px
+}
+
 article {
-    width: 25%;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 360px;
+}
+
+aside{
+    margin-top: 50px;
+}
+#farm{
+    background-color: #29b475;
+    color: white;
+    font-weight: bold;
+    height: 50px;
+    width: 200px;
 }
 
 /*  side design */
+#art {
+    position: absolute;
+    right: 0%;
+    top: 0;
+    height: 100%;
+    width: 55%;
+    overflow: hidden;
+}
+
 .circle {
-    height: 200px;
-    width: 200px;
+    height: 750px;
+    width: 750px;
     border-radius: 50%;
-    background: lightgreen;
+    background: #29b475;
     opacity: 0.5;
     position: absolute;    
 }
 #c1 {
-    margin-left: 20px;
+    margin-top: -150px;
+    margin-left: 200px;
 }
+
+#c2 {
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+#c3 {
+    width: 500px;
+    height: 500px;
+    margin-top: 100px;
+    margin-left: 300px;
+}
+

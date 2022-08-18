@@ -1,0 +1,23 @@
+/*
+This doesnt work for some reason
+
+:root {
+    --black: #494c62;
+    --white: #ffff;
+    --green: #29b475;
+    --yellow: #fbb040;
+    --lightgray: #d7d7d7;
+    --gray: #6a6d7f;
+}
+*/
+
+@font-face {
+    font-family: Manrope;
+    src: url(../fonts/Manrope-VariableFont_wght.ttf);
+}
+
+* {
+    font-family: Manrope;
+    color: #1e1e1e;
+}
+
