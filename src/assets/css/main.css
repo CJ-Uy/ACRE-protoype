@@ -1,4 +1,64 @@
+@font-face {
+    font-family: Manrope;
+    src: url(../fonts/Manrope-VariableFont_wght.ttf);
+}
+
+* {
+    outline: #4CAF50 solid 2px;
+    font-family: Manrope;
+}
+
+
+/*  Header  */
+header{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+    display: grid;
+}
+
 h1 {
-    color: aqua;
-    text-align: center;
+    width: auto;
+    display:inline-block;
+    font-size: 35px;
+}
+
+#logo {
+    height: 35px;
+    width: 35px;
+}
+
+nav {
+    display: inline-block;
+    width: 50%;
+    margin-left: 50px;
+}
+
+
+
+/*  Middle Content */
+main {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#name{
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+article {
+    width: 25%;
+}
+
+/*  side design */
+.circle {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: lightgreen;
+    opacity: 0.5;
+    position: absolute;    
+}
+#c1 {
+    margin-left: 20px;
 }
