@@ -24,7 +24,15 @@ npm run server
 ```
 then on the other instance of the terminal run
 ```sh
-npm run dev
+npm run serve
+```
+5. If you are developing and ESlint and Prettier cause errors run
+```sh
+npm run lint
+```
+or
+```sh
+npm run lint -- --fix
 ```
 6. If you want to build a production ready version run
 ```sh

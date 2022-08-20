@@ -1,7 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-//sample import
-import "./assets/javascript/test.js"
-
-createApp(App).mount('#app')
+createApp(App).use(router).mount("#app");

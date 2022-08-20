@@ -21,3 +21,38 @@ This doesnt work for some reason
     color: #1e1e1e;
 }
 
+/* * {
+    outline: 2px solid lightgreen;
+} */
+
+/*  Header  */
+header{
+    width: 100%;
+    margin-top: 1%;
+}
+
+h1 {
+    width: auto;
+    display:inline-block;
+    font-size: 35px;
+}
+
+#logo {
+    margin-left: 8%;
+    height: 35px;
+    width: 35px;
+}
+
+nav {
+    display: inline-block;
+    width: 50%;
+    margin-left: 50px;
+}
+
+nav a {
+    text-decoration: none;
+  }
+  
+nav a.router-link-exact-active {
+    color: #29b475;
+}
