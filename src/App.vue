@@ -1,7 +1,7 @@
 <template>
   <header>
     <img id="logo" src="./assets/images/acre_logo.png" alt="ACRE logo" />
-    <h1 id="title">ACRE</h1>
+    <h1 id="title">{{ this.$store.getters.appName }}</h1>
     <nav>
       <router-link id="home" to="/">Home</router-link> |
       <router-link id="about" to="/about">About</router-link> |

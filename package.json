@@ -8,8 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "scriptsComments": {
-    "serve and build" : "--skip-plugins @vue/cli-plugin-eslint just to keep eslint and prettier from being annoying",
-    "before commiting" : "Be sure to run /npm run lint/ or /npm run lint -- --fix/ just to keep things clean"
+    "serve and build": "--skip-plugins @vue/cli-plugin-eslint just to keep eslint and prettier from being annoying",
+    "before commiting": "Be sure to run /npm run lint/ or /npm run lint -- --fix/ just to keep things clean"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -19,7 +19,8 @@
     "firebase": "^9.9.3",
     "puppeteer": "^16.2.0",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
