@@ -4,11 +4,7 @@ This is a prototype program for the Assisted Cavendish Real-time Emulator
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[VSCode](https://code.visualstudio.com/)
 
 ## Project Setup
 1. Download [Node.js](https://nodejs.org/en/) if you do not have it yet
