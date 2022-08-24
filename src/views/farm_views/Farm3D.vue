@@ -1,12 +1,12 @@
 <template>
-  <nav>
+  <div class="farmnav">
     <h1>3D VIEW</h1>
     <Farm_navbar />
-  </nav>
+  </div>
 </template>
 
 <style scoped>
-@import url("@/assets/css/farm_css/Farm3D.css");
+@import url("@/assets/css/FarmUniversal.css");
 </style>
 
 <script>

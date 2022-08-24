@@ -12,6 +12,7 @@
       and Simple Algorithm
     </article>
     <aside>
+      <!--Maybe make this into a sign in sign out?-->
       <button id="farm">Enter the Farm</button>
     </aside>
   </main>
@@ -22,7 +23,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 @import url("../assets/css/home.css");
 </style>
 
