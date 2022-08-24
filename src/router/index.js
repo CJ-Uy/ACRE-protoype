@@ -4,6 +4,10 @@ import AboutView from "../views/About.vue";
 import PlantBaseView from "../views/PlantBase.vue";
 import FarmDashView from "../views/farm_views/FarmDash.vue";
 import ContactView from "../views/Contact.vue";
+//Farm Views
+import Farm3DView from "../views/farm_views/Farm3D.vue";
+import FarmCalendarView from "../views/farm_views/FarmCal.vue";
+import FarmInventoryView from "../views/farm_views/FarmInv.vue";
 
 const routes = [
   {
@@ -30,6 +34,22 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: ContactView,
+  },
+  //Farm routers
+  {
+    path: "/farm/3D-View",
+    name: "farm/3D-View",
+    component: Farm3DView,
+  },
+  {
+    path: "/farm/calendar",
+    name: "farm/calendar",
+    component: FarmCalendarView,
+  },
+  {
+    path: "/farm/inventory",
+    name: "farm/inventory",
+    component: FarmInventoryView,
   },
 ];
 
