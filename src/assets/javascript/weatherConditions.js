@@ -12,12 +12,12 @@ function checkForAlerts(obj) {
 }
 
 //Weather Conditions Constructor ---> Add unit conversions
-function weatherInfo(data) {
-  this.data = data; //literally everything
-
-  this.timeOfCalc = new Date(data.current.dt * 1000 + data.timezone_offset); //Time set to local time
-  this.timezone = data.timezone;
-  //Reminder to get current weather data.current.weather[0].main;
+class weatherInfo {
+  constructor(data){
+    this.data = data; //literally everything
+    this.timeOfCalc = new Date(data.current.dt * 1000 + data.timezone_offset); //Time set to local time
+    this.timezone = data.timezone;
+  }
 }
 
 //Shows errors regarding GeoLocate
@@ -62,10 +62,9 @@ navigator.geolocation.getCurrentPosition((position) => {
       //Weather Conditions Saved
       let wCon = new weatherInfo(data); //weather conditions
       console.log(wCon);
-      sessionStorage.setItem("weather", wCon);
     })
     .catch(function (error) {
-      console.log("OpenWeather API has failed to reply");
+      console.log("OpenWeather API has failed to reply\n" + error);
     });
 }, showError);
 

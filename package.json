@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --skip-plugins @vue/cli-plugin-eslint",
     "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "server": "node src/server/server.js"
   },
   "scriptsComments": {
     "serve and build": "--skip-plugins @vue/cli-plugin-eslint just to keep eslint and prettier from being annoying",

@@ -14,14 +14,19 @@ let bananaPrice;
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") }); //this path may change depending one where this file is
 
-const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+const ONE_CALL_WEATHER_API_KEY = process.env.ONE_CALL_WEATHER_API_KEY;
+const HISTORY_WEATHER_API_KEY = process.env.HISTORY_WEATHER_API_KEY;
 const LOCATION_IQ_API_KEY = process.env.LOCATION_IQ_API_KEY;
 
 // app.get("/", async (req, res) => {
 //     res.send("Hello World");
 // });
 app.get("/weather_conditions_api_key", (req, res) => {
-  res.json({ WEATHER_API_KEY: WEATHER_API_KEY });
+  res.json({ ONE_CALL_WEATHER_API_KEY: ONE_CALL_WEATHER_API_KEY });
+});
+
+app.get("/weather_conditions_api_key", (req, res) => {
+  res.json({ HISTORY_WEATHER_API_KEY: HISTORY_WEATHER_API_KEY });
 });
 
 app.get("/location_iq_api_key", (req, res) => {
@@ -42,7 +47,6 @@ async function getBananaPrice(req, res, next) {
   const page = await browser.newPage();
 
   let NUMBEO = "https://www.numbeo.com/cost-of-living/in/";
-  const bananaXMLPath = "/html/body/div[2]/table/tbody/tr[19]/td[2]/span";
 
   //Numbero banan price set to local
   await page.goto(NUMBEO + city + "-" + country);

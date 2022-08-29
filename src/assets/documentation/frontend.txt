@@ -1,0 +1,8 @@
+Vue: https://vuejs.org/
+
+Farm
+    Calendar
+        DatePicker: https://vue3datepicker.com/
+        FullCalendar: https://fullcalendar.io/
+
+        

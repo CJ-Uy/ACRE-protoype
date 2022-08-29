@@ -28,7 +28,7 @@ async function getWeather(lat, lon) {
         "&lon=" +
         lon +
         "&exclude=minutely&units=metric&appid=" +
-        key.WEATHER_API_KEY;
+        key.ONE_CALL_WEATHER_API_KEY;
       fetch(weatherAPIUrl)
         .then((response) => {
           return response.json();
@@ -40,11 +40,11 @@ async function getWeather(lat, lon) {
           console.log(wCon);
         })
         .catch(function (error) {
-          console.log("OpenWeather API has failed to reply");
+          console.log("OpenWeather API has failed to reply\n" + error);
         });
     })
     .catch(function (error) {
-      console.log("Backend API not reached");
+      console.log("Backend API not reached\n" + error);
     });
 }
 
@@ -59,12 +59,13 @@ function checkForAlerts(obj) {
 }
 
 //Weather Conditions Constructor ---> Add unit conversions
-function weatherInfo(data) {
-  this.data = data; //literally everything
-
-  this.timeOfCalc = new Date(data.current.dt * 1000 + data.timezone_offset); //Time set to local time
-  this.timezone = data.timezone;
-  //Reminder to get current weather data.current.weather[0].main;
+class weatherInfo {
+  constructor(data){
+    this.data = data; //literally everything
+    this.timeOfCalc = new Date(data.current.dt * 1000 + data.timezone_offset); //Time set to local time
+    this.timezone = data.timezone;
+    //Reminder to get current weather data.current.weather[0].main;
+  }
 }
 
 //Shows errors regarding GeoLocate
@@ -124,7 +125,6 @@ async function getBananaPrice(lat, lon) {
         "&lon=" +
         lon +
         "&format=json";
-      console.log("LocationIQ API request link: " + LocationIQURL);
       fetch(LocationIQURL)
         .then((response) => {
           return response.json();
@@ -135,7 +135,6 @@ async function getBananaPrice(lat, lon) {
 
           let bananaPriceAPIUrl =
             HOST_NAME + "banana/price/" + country + "/" + city;
-          console.log("Banana price API request: " + bananaPriceAPIUrl);
 
           fetch(bananaPriceAPIUrl)
             .then((response) => {

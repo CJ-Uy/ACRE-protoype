@@ -4,7 +4,7 @@ node_modules
 
 
 # local env files
-# .env #removed for now to make things easier 
+.env 
 .env.local
 .env.*.local
 

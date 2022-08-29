@@ -1,0 +1,11 @@
+Puppeteer: https://pptr.dev/
+
+APIs:
+    OpenWeather: 
+        One call API: https://openweathermap.org/api/one-call-3
+        Historical Accumulated Data API: https://openweathermap.org/api/accumulated-parameters
+        Initiative for free data for students: https://openweathermap.org/our-initiatives/student-initiative
+
+    LocationIQ: https://locationiq.com/
+
+    Numbeo: https://www.numbeo.com/cost-of-living/
