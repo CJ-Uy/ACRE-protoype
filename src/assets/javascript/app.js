@@ -48,15 +48,15 @@ async function getWeather(lat, lon) {
     });
 }
 
-//We need these cause if the value of something in OpenWeather API is 0 they dont add the property (rain and alerts)
-function checkForRain(obj) {
-  if ("rain" in obj) return obj.rain; //rain in mm
-  else return 0;
-}
-function checkForAlerts(obj) {
-  if ("alerts" in obj) return true;
-  else return false;
-}
+// //We need these cause if the value of something in OpenWeather API is 0 they dont add the property (rain and alerts)
+// function checkForRain(obj) {
+//   if ("rain" in obj) return obj.rain; //rain in mm
+//   else return 0;
+// }
+// function checkForAlerts(obj) {
+//   if ("alerts" in obj) return true;
+//   else return false;
+// }
 
 //Weather Conditions Constructor ---> Add unit conversions
 class weatherInfo {

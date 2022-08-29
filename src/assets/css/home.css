@@ -10,7 +10,7 @@ main {
     margin-bottom: 20px;
 }
 #cavendish{
-    color: #fbb040;
+    color: var(--yellow);
     letter-spacing: 15px
 }
 
@@ -24,7 +24,7 @@ aside{
     margin-top: 50px;
 }
 #farm{
-    background-color: #29b475;
+    background-color: var(--green);
     color: white;
     font-weight: bold;
     height: 50px;
@@ -45,7 +45,7 @@ aside{
     height: 750px;
     width: 750px;
     border-radius: 50%;
-    background: #29b475;
+    background: var(--green);
     opacity: 0.5;
     position: absolute;    
 }

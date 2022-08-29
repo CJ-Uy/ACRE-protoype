@@ -1,6 +1,3 @@
-/*
-This doesnt work for some reason
-
 :root {
     --black: #494c62;
     --white: #ffff;
@@ -9,7 +6,6 @@ This doesnt work for some reason
     --lightgray: #d7d7d7;
     --gray: #6a6d7f;
 }
-*/
 
 @font-face {
     font-family: Manrope;
@@ -54,5 +50,5 @@ nav a {
 }
   
 nav a.router-link-exact-active {
-    color: #29b475;
+    color: var(--green);
 }

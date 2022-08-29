@@ -7,6 +7,7 @@
     <div id="farm_date_picker">
       <Farm_date_picker />
     </div>
+    <br />
     <div id="farm_calendar">
       <Farm_calendar />
     </div>
@@ -17,10 +18,6 @@
 @import url("@/assets/css/FarmUniversal.css");
 #farm_calendar {
   position: inline-block;
-}
-#farm_date_picker {
-  outline: 2px ssolid green;
-  width: 20%;
 }
 </style>
 
