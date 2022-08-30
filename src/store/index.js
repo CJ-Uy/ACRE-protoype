@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 const store = createStore({
   state: {
     appName: "ACRE",
+    datePlanted: null,
     bananaPrice: "Loading...",
   },
   getters: {
@@ -11,7 +12,10 @@ const store = createStore({
     },
   },
   mutations: {
-    //
+    setDatePlanted(state, value) {
+      state.datePlanted = value;
+      console.log(store.datePlanted);
+    },
   },
   actions: {
     //TODO add connections to server

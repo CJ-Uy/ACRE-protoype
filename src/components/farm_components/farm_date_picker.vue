@@ -7,9 +7,9 @@
       :enableTimePicker="false"
       placeholder="Enter Date"
     />
-    <h1></h1>
+    <div></div>
     <h2>Estimated Yeild Date</h2>
-    <Datepicker
+    <input
       v-model="estimated_yeild_date"
       disabled
       placeholder="Enter Date Planted"
@@ -18,6 +18,7 @@
 </template>
 
 <style scoped>
+/*TODO style the estimated yeild date to look like the date planted */
 #farm_date_pick {
   display: grid;
   place-items: center;
@@ -33,34 +34,25 @@
 <script>
 import Datepicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-import { ref } from "vue";
 
 export default {
-  //TODO show estimated yeild date
-  //TODO add date_planted to vuex
   //TODO show them all on calendar component
-  setup() {
-    const date_planted = ref(new Date());
-    const format = (date) => {
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
-    };
-    return {
-      date_planted,
-      format,
-    };
-  },
   components: { Datepicker },
   data() {
-    //Might be important
+    //
   },
   methods: {
-    //Might later be needed
+    //Might later be needd
   },
   computed: {
-    //TODO Figure this out
+    date_planted: {
+      get() {
+        return this.$store.state.datePlanted;
+      },
+      set(value) {
+        this.$store.commit("setDatePlanted", value);
+      },
+    },
     estimated_yeild_date: {
       get() {
         let banana_cycle_length = 6; //in months
@@ -68,6 +60,10 @@ export default {
         const day = newDate.getDate();
         const month = newDate.getMonth() + 1 + banana_cycle_length;
         const year = newDate.getFullYear();
+        //This if condition checks for when the date is cleared in the date_planted form
+        if (day == 1 && month == 7 && year == 1970) {
+          return "Enter Date Planted";
+        }
         return `${day}/${month}/${year}`;
       },
       set() {},
