@@ -6,6 +6,11 @@ This is a prototype program for the Assisted Cavendish Real-time Emulator
 
 [VSCode](https://code.visualstudio.com/)
 
+VSCODE Exteensions:
+    - Volar
+    - TODO Tree
+    - Material Icon Theme
+
 ## Project Setup
 1. Download [Node.js](https://nodejs.org/en/) if you do not have it yet
 2. In your terminal run the command to download all dependencies

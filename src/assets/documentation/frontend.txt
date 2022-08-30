@@ -1,8 +1,7 @@
-Vue: https://vuejs.org/
+Javascript Framework:
+    Vue: https://vuejs.org/
 
 Farm
     Calendar
-        DatePicker: https://vue3datepicker.com/
+        Vue3DatePicker: https://vue3datepicker.com/
         FullCalendar: https://fullcalendar.io/
-
-        

@@ -60,7 +60,7 @@ async function getWeather(lat, lon) {
 
 //Weather Conditions Constructor ---> Add unit conversions
 class weatherInfo {
-  constructor(data){
+  constructor(data) {
     this.data = data; //literally everything
     this.timeOfCalc = new Date(data.current.dt * 1000 + data.timezone_offset); //Time set to local time
     this.timezone = data.timezone;
