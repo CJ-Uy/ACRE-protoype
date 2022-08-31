@@ -3,14 +3,14 @@
     <h2>Date Planted</h2>
     <Datepicker
       v-model="date_planted"
-      :format="format"
       :enableTimePicker="false"
       placeholder="Enter Date"
     />
     <div></div>
     <h2>Estimated Yeild Date</h2>
-    <input
+    <Datepicker
       v-model="estimated_yeild_date"
+      :enableTimePicker="false"
       disabled
       placeholder="Enter Date Planted"
     />
@@ -18,7 +18,6 @@
 </template>
 
 <style scoped>
-/*TODO style the estimated yeild date to look like the date planted */
 #farm_date_pick {
   display: grid;
   place-items: center;
@@ -55,18 +54,24 @@ export default {
     },
     estimated_yeild_date: {
       get() {
-        let banana_cycle_length = 6; //in months
-        let newDate = new Date(this.date_planted);
-        const day = newDate.getDate();
-        const month = newDate.getMonth() + 1 + banana_cycle_length;
-        const year = newDate.getFullYear();
-        //This if condition checks for when the date is cleared in the date_planted form
-        if (day == 1 && month == 7 && year == 1970) {
-          return "Enter Date Planted";
+        //TODO: Fix this something wronf with the date increment
+        let date = new Date(this.$store.state.estimatedYeildDate);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        if (
+          (day == 1 && month == 1 && year == 1970) ||
+          (day == 1 && month == 7 && year == 1970)
+        ) {
+          return null;
+        } else {
+          // eslint-disable-next-line prettier/prettier
+          return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
         }
-        return `${day}/${month}/${year}`;
       },
-      set() {},
+      set(value) {
+        this.$store.commit("setEstimatedYeildDate", value);
+      },
     },
   },
 };

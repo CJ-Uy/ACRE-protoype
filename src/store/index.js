@@ -4,7 +4,10 @@ const store = createStore({
   state: {
     appName: "ACRE",
     datePlanted: null,
+    estimatedYeildDate: null,
     bananaPrice: "Loading...",
+    //JSON Objects
+    BANANA_LIFE_CYCLE: 6, //in months
   },
   getters: {
     appName(state) {
@@ -14,7 +17,13 @@ const store = createStore({
   mutations: {
     setDatePlanted(state, value) {
       state.datePlanted = value;
-      console.log(store.datePlanted);
+      this.commit("setEstimatedYeildDate", value);
+    },
+    setEstimatedYeildDate(state, value) {
+      state.estimatedYeildDate = new Date(value);
+      state.estimatedYeildDate = state.estimatedYeildDate.setMonth(
+        state.estimatedYeildDate.getMonth() + state.BANANA_LIFE_CYCLE
+      );
     },
   },
   actions: {

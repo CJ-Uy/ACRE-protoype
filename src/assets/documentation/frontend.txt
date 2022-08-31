@@ -1,6 +1,9 @@
 Javascript Framework:
     Vue: https://vuejs.org/
 
+State Management: (Think of it as a mini database locally just for varaibles so u can use them anywhere)
+    Vuex: https://vuex.vuejs.org/guide/
+
 Farm
     Calendar
         Vue3DatePicker: https://vue3datepicker.com/
