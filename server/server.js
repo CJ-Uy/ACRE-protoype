@@ -12,7 +12,7 @@ app.use(
 let bananaPrice;
 
 const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../../.env") }); //this path may change depending one where this file is
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") }); //this path may change depending one where this file is
 
 const ONE_CALL_WEATHER_API_KEY = process.env.ONE_CALL_WEATHER_API_KEY;
 const HISTORY_WEATHER_API_KEY = process.env.HISTORY_WEATHER_API_KEY;
@@ -38,6 +38,7 @@ app.get("/banana/price/:country/:city", getBananaPrice, (req, res) => {
   res.json({ bananaPrice: bananaPrice });
 });
 
+/* ----- MIDDLEWARE ----- */
 //Getting the banana price
 async function getBananaPrice(req, res, next) {
   let country = req.params.country;

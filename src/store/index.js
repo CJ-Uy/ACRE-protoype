@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import { exportBananaPrice } from "@/assets/javascript/apiCalls";
 
 const store = createStore({
   state: {
@@ -13,6 +14,9 @@ const store = createStore({
     appName(state) {
       return state.appName;
     },
+    bananaPrice(state) {
+      return state.bananaPrice;
+    },
   },
   mutations: {
     setDatePlanted(state, value) {
@@ -25,9 +29,23 @@ const store = createStore({
         state.estimatedYeildDate.getMonth() + state.BANANA_LIFE_CYCLE
       );
     },
+    setBananaPrice(state, value) {
+      state.bananaPrice = value;
+    },
   },
   actions: {
     //TODO add connections to server
+    async setBananaPrice() {
+      try {
+        //BUG Not working something wrong with awaits and stuff
+        let price = await exportBananaPrice();
+        console.log(price);
+        this.commit("setBananaPrice", price);
+      } catch (error) {
+        this.commit("setBananaPrice", "Error");
+        console.log(error);
+      }
+    },
   },
   modules: {
     //

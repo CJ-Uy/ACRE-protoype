@@ -54,7 +54,6 @@ export default {
     },
     estimated_yeild_date: {
       get() {
-        //TODO: Fix this something wronf with the date increment
         let date = new Date(this.$store.state.estimatedYeildDate);
         const day = date.getDate();
         const month = date.getMonth() + 1;

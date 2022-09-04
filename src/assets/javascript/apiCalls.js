@@ -5,18 +5,39 @@ const WEATHER_CONDITIONS_API_KEY_REQUEST =
 const LOCATION_IQ_QPI_KEY_REQUEST = HOST_NAME + "location_iq_api_key";
 
 /* ----- MAIN FUNCTION ----- */
-navigator.geolocation.getCurrentPosition((position) => {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+//TODO Figure this one out
+// navigator.geolocation.getCurrentPosition((position) => {
+//   let lat = position.coords.latitude;
+//   let lon = position.coords.longitude;
 
-  console.log(`Lat: ${lat}   Lon: ${lon}`);
-  getWeather(lat, lon);
-  getBananaPrice(lat, lon);
-}, showError);
+//   console.log(`Lat: ${lat}   Lon: ${lon}`);
+//   getWeather(lat, lon);
+//   getBananaPrice(lat, lon);
+// }, showError);
 /* ----- END OF MAIN FUNCTION ----- */
 
+/* ----- EXPORT FUNCTIONS -----*/
+//TODO Something wrong here
+export async function exportBananaPrice() {
+  navigator.geolocation.getCurrentPosition((position) => {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let price = getBananaPrice(lat, lon);
+    console.log("price inside: " + price);
+    return price;
+  }, showError);
+}
+
+export async function exportWeatherConditions() {
+  navigator.geolocation.getCurrentPosition((position) => {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    return getWeatherConditions(lat, lon);
+  }, showError);
+}
+
 /* ----- WEATHER FUNCTIONS ----- */
-async function getWeather(lat, lon) {
+async function getWeatherConditions(lat, lon) {
   fetch(WEATHER_CONDITIONS_API_KEY_REQUEST)
     .then((res) => {
       return res.json();
@@ -141,8 +162,9 @@ async function getBananaPrice(lat, lon) {
               return response.json();
             })
             .then((data) => {
-              console.log(data);
-              sessionStorage.setItem("bananaPrice", data.bananaPrice);
+              //BUG recheck this part
+              console.log(data.bananaPrice);
+              return data.bananaPrice;
             })
             .catch((error) => {
               console.log("Banana Price failed to fetch");
