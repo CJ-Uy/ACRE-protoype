@@ -6,7 +6,7 @@ const store = createStore({
     datePlanted: null,
     estimatedYeildDate: null,
     bananaPrice: "Loading...",
-    //JSON Objects
+    //TODO place and use JSON Objects
     BANANA_LIFE_CYCLE: 6, //in months
   },
   getters: {
